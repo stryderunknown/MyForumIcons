@@ -13,7 +13,7 @@
 	 
 	// Admin settings injection
 	$plugins->add_hook("admin_formcontainer_output_row", "myforumicons_admin_settings");
-	$plugins->add_hook("admin_forum_management_add", "myforumicons_admin_settings_save");
+	$plugins->add_hook("admin_forum_management_add_commit", "myforumicons_admin_settings_save");
 	$plugins->add_hook("admin_forum_management_edit", "myforumicons_admin_settings_save");
 	
 	// Inject creation of forum row.
