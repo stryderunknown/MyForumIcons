@@ -1,6 +1,3 @@
-# Do not use
-This plugin is not yet ready for release.
-
 # MyForumIcons
 Set custom icons for your MyBB forums.
 
