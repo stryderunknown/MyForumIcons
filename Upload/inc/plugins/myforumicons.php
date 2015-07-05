@@ -11,6 +11,16 @@
 	 *	Like pokemon? Check out http://www.pokemonforum.org/
 	 */
 	 
+	 // Disallow direct access to this file for security reasons
+	if(!defined("IN_MYBB")){
+	die("Direct initialization of this file is not allowed.");
+	}
+	// Define MYBB_ROOT if for some reason it's missing
+	if(!defined('MYBB_ROOT')){
+	define('MYBB_ROOT', dirname(dirname(__FILE__))."/");
+	}
+
+	 
 	// Admin settings injection
 	$plugins->add_hook("admin_formcontainer_output_row", "myforumicons_admin_settings");
 	$plugins->add_hook("admin_forum_management_add_commit", "myforumicons_admin_settings_save");
