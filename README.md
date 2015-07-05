@@ -24,7 +24,6 @@ These blocks are then used by CSS when the right status is met.  You'll find cod
 	background: url(images/forum_icon_sprite.png) no-repeat 0 0;
 	height: 50px;
 	display: inline-block;
-	
 	width: 50px;
 }
 
