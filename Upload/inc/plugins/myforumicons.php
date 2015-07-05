@@ -65,13 +65,15 @@
 	function myforumicons_activate()
 	{
 		require_once MYBB_ROOT."inc/adminfunctions_templates.php";
-		find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote("id=\"mark_read_{\$forum['fid']}\"></span>")."#i", "id=\"mark_read_{\$forum['fid']}\" {\$forum['myforumicon_override']}></span>{\$forum['myforumicon']}");
+		find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote("<td class=\"{\$bgcolor}\" align=\"center\" width=\"50px\">")."#i", "<td class=\"{\$bgcolor}\" align=\"center\" width=\"50px\" style=\"{\$forum['myforumicon']}\">");
+		// find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote("id=\"mark_read_{\$forum['fid']}\"></span>")."#i", "id=\"mark_read_{\$forum['fid']}\" {\$forum['myforumicon_override']}></span>{\$forum['myforumicon']}");
 	}
 	
 	function myforumicons_deactivate()
 	{
 		require_once MYBB_ROOT."inc/adminfunctions_templates.php";
-		find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote(" {\$forum['myforumicon_override']}></span>{\$forum['myforumicon']}")."#i", "></span>");
+		find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote("<td class=\"{\$bgcolor}\" align=\"center\" width=\"50px\" style=\"{\$forum['myforumicon']}\">")."#i", "<td class=\"{\$bgcolor}\" align=\"center\" width=\"50px\">");
+		// find_replace_templatesets("forumbit_depth2_forum", "#".preg_quote(" {\$forum['myforumicon_override']}></span>{\$forum['myforumicon']}")."#i", "></span>");
 	}
 	
 	function myforumicons_display_icons($forum)
@@ -80,8 +82,9 @@
 		if(!empty($forum['myforumicons_icon']))
 		{
 			$icon_path = str_replace("{theme}", $theme['imgdir'], $forum['myforumicons_icon']);
-			$forum['myforumicon_override'] = ' style="display: none;"';
-			$forum['myforumicon'] = "<img src=\"{$icon_path}\" alt=\"{$forum['name']}\" />";
+			// $forum['myforumicon_override'] = ' style="display: none;"';
+			$forum['myforumicon'] = "background-image:url('{$icon_path}');background-repeat:no-repeat;background-position: center;";
+			//$forum['myforumicon'] = "<img src=\"{$icon_path}\" alt=\"{$forum['name']}\" />";
 		}
 		return $forum;
 	}
